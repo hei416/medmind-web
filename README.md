@@ -1,6 +1,6 @@
 # Medmind Technology — Website Mockup
 
-Static marketing site mockup for Medmind Technology Limited (醍念科技).
+Static marketing site mockup for Medmind Technology Limited (醫念科技).
 
 ## Structure
 
