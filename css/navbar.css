@@ -13,6 +13,11 @@ nav.main-nav { display: flex; align-items: center; gap: 26px; }
 .nav-item:hover, .nav-item.open { color: var(--brand-blue); }
 .nav-cta { background: var(--brand-blue); color: #fff; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; white-space: nowrap; }
 
+.logo-image {
+  max-width: 150px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
 /* SIMPLE DROPDOWN (產品 / 文章 / 關於我們) */
 .simple-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: #fff; border: 1px solid var(--border-soft); border-radius: 12px; box-shadow: var(--shadow); padding: 10px; min-width: 210px; display: none; flex-direction: column; gap: 2px; margin-top: 0; }
 .nav-item:hover .simple-dropdown { display: flex; }
