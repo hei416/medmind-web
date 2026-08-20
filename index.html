@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medmind Technology — website Mockup </title>
+<style>
+  :root{
+    --brand-blue:#1f6f8b;--brand-blue-dark:#155263;--brand-teal:#2fa89b;--brand-green:#4caf7d;
+    --bg-cream:#faf7f2;--text-dark:#1f2933;--text-mid:#52606d;--card-bg:#ffffff;
+    --border-soft:#e4e9ec;--shadow:0 4px 16px rgba(31,111,139,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--text-dark);background:var(--bg-cream);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .mock-banner{background:#fff3cd;color:#7a5b00;text-align:center;font-size:13px;padding:8px 16px;border-bottom:1px solid #f0d98c;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border-soft);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1160px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--brand-blue-dark);}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand-teal),var(--brand-blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:800;}
+  nav.main-nav{display:flex;align-items:center;gap:26px;}
+  .nav-item{position:relative;font-size:15px;font-weight:500;color:var(--text-dark);cursor:pointer;padding:8px 0;}
+  .nav-item:hover{color:var(--brand-blue);}
+  .dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border-soft);border-radius:12px;box-shadow:var(--shadow);padding:10px;min-width:230px;display:none;flex-direction:column;gap:2px;margin-top:10px;}
+  .nav-item:hover .dropdown{display:flex;}
+  .dropdown a{padding:10px 12px;border-radius:8px;font-size:14px;color:var(--text-mid);white-space:nowrap;}
+  .dropdown a:hover{background:var(--bg-cream);color:var(--brand-blue-dark);}
+  .nav-cta{background:var(--brand-blue);color:#fff;padding:10px 20px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap;}
+  .mobile-toggle{display:none;font-size:22px;background:none;border:none;cursor:pointer;color:var(--brand-blue-dark);}
+
+  /* HERO */
+  .hero{padding:60px 24px 36px;background:linear-gradient(180deg,#eef7f6 0%, var(--bg-cream) 100%);}
+  .hero-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border-soft);padding:6px 14px;border-radius:999px;font-size:13px;color:var(--brand-teal);font-weight:600;margin-bottom:18px;}
+  .hero h1{font-size:36px;line-height:1.3;margin:0 0 14px;color:var(--brand-blue-dark);font-weight:800;}
+  .hero p.sub{font-size:16px;color:var(--text-mid);margin:0 0 26px;max-width:480px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{background:var(--brand-blue);color:#fff;padding:14px 26px;border-radius:10px;font-weight:700;font-size:15px;box-shadow:var(--shadow);}
+  .btn-primary:hover{background:var(--brand-blue-dark);}
+  .btn-secondary{background:#fff;color:var(--brand-blue-dark);padding:14px 26px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid var(--brand-blue);}
+  .btn-secondary:hover{background:#eef7f6;}
+  .hero-visual{background:linear-gradient(135deg,var(--brand-teal),var(--brand-blue));border-radius:20px;height:320px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;text-align:center;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+  .hero-visual::before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.12);top:-60px;right:-60px;}
+  .hero-visual::after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.10);bottom:-50px;left:-40px;}
+  .hero-visual span{position:relative;z-index:2;font-weight:600;}
+
+  /* GEO NOTE */
+  .geo-note{background:#eef7f6;border:1px dashed var(--brand-teal);border-radius:12px;padding:10px 16px;font-size:12px;color:var(--brand-blue-dark);margin-top:16px;}
+
+  /* TRUST STATS */
+  .stats{background:#fff;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);padding:28px 24px;}
+  .stats-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+  .stat-num{font-size:28px;font-weight:800;color:var(--brand-blue);}
+  .stat-label{font-size:13px;color:var(--text-mid);margin-top:4px;}
+
+  .section{padding:60px 24px;}
+  .section-inner{max-width:1160px;margin:0 auto;}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 36px;}
+  .section-head .eyebrow{color:var(--brand-teal);font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  .section-head h2{font-size:26px;margin:8px 0 12px;color:var(--brand-blue-dark);}
+  .section-head p{color:var(--text-mid);font-size:14px;}
+
+  /* ALL PRODUCTS — Motive Force 式全列出 */
+  .product-grid-full{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .product-card{background:var(--card-bg);border:1px solid var(--border-soft);border-radius:16px;padding:22px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;transition:transform .15s ease;position:relative;}
+  .product-card:hover{transform:translateY(-4px);}
+  .new-tag{position:absolute;top:14px;right:14px;background:var(--brand-green);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;}
+  .product-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;}
+  .icon-ng{background:linear-gradient(135deg,#5aa9e6,#1f6f8b);}
+  .icon-pp{background:linear-gradient(135deg,#4caf7d,#2fa89b);}
+  .icon-ai{background:linear-gradient(135deg,#f2a154,#e0703c);}
+  .icon-ar{background:linear-gradient(135deg,#b083e0,#7a5cc4);}
+  .product-card h3{margin:0;font-size:16px;color:var(--text-dark);}
+  .product-card p{margin:0;font-size:13px;color:var(--text-mid);flex-grow:1;}
+  .product-card .link{font-size:13px;font-weight:700;color:var(--brand-blue);}
+  .product-card .link:hover{color:var(--brand-blue-dark);}
+  .view-all{text-align:center;margin-top:28px;}
+  .view-all a{font-size:14px;font-weight:700;color:var(--brand-blue);border:1.5px solid var(--brand-blue);padding:10px 24px;border-radius:999px;}
+  .view-all a:hover{background:var(--brand-blue);color:#fff;}
+
+  /* INDUSTRY RECOGNITION — 新增，仿 Motive Force */
+  .recognition-strip{background:#fff;padding:36px 24px;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);}
+  .recognition-inner{max-width:1160px;margin:0 auto;text-align:center;}
+  .recognition-inner .eyebrow{color:var(--brand-teal);font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;display:block;}
+  .badge-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .badge-chip{background:var(--bg-cream);border:1px solid var(--border-soft);border-radius:10px;padding:12px 20px;font-size:13px;color:var(--text-dark);font-weight:600;display:flex;align-items:center;gap:8px;}
+
+  /* SOLUTIONS BY INDUSTRY — 仿 Targeted Application Solutions */
+  .industry-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .industry-card{background:#fff;border:1px solid var(--border-soft);border-radius:16px;padding:28px;box-shadow:var(--shadow);}
+  .industry-card h3{margin:0 0 10px;font-size:18px;color:var(--brand-blue-dark);}
+  .industry-card p{margin:0 0 16px;font-size:14px;color:var(--text-mid);}
+  .fund-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+  .fund-tag{background:var(--bg-cream);border:1px solid var(--border-soft);font-size:12px;color:var(--brand-blue-dark);padding:5px 12px;border-radius:999px;font-weight:600;}
+
+  /* ARTICLES — GEO 關鍵區塊 */
+  .article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .article-card{background:#fff;border:1px solid var(--border-soft);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);}
+  .article-thumb{height:100px;background:linear-gradient(135deg,#dce9ea,#c7dde0);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--brand-blue-dark);}
+  .article-body{padding:16px;}
+  .article-tag{font-size:11px;color:var(--brand-teal);font-weight:700;margin-bottom:6px;text-transform:uppercase;}
+  .article-card h4{margin:0 0 8px;font-size:14px;color:var(--text-dark);line-height:1.4;}
+  .article-card p{margin:0;font-size:12px;color:var(--text-mid);}
+  .article-date{font-size:11px;color:#93a1ab;margin-top:8px;}
+
+  /* PARTNERS & CLIENTS — 條列客戶類型 */
+  .client-types{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  .client-chip{background:#fff;border:1px solid var(--border-soft);border-radius:999px;padding:9px 18px;font-size:13px;color:var(--text-mid);}
+
+  /* WHY US */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .why-item{text-align:center;padding:16px 12px;}
+  .why-icon{width:52px;height:52px;border-radius:50%;background:#eef7f6;color:var(--brand-blue);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;}
+  .why-item h4{margin:0 0 6px;font-size:14px;color:var(--text-dark);}
+  .why-item p{margin:0;font-size:12px;color:var(--text-mid);}
+
+  .final-cta{background:linear-gradient(135deg,var(--brand-blue),var(--brand-teal));color:#fff;text-align:center;padding:60px 24px;border-radius:24px;max-width:1112px;margin:0 auto 60px;}
+  .final-cta h2{font-size:24px;margin:0 0 10px;}
+  .final-cta p{font-size:14px;margin:0 0 24px;opacity:.9;}
+  .final-cta .btn-primary{background:#fff;color:var(--brand-blue-dark);}
+
+  footer{background:var(--brand-blue-dark);color:#dce8ea;padding:40px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-col h5{color:#fff;font-size:14px;margin:0 0 12px;}
+  .footer-col a{display:block;color:#b8ccd0;margin-bottom:8px;font-size:13px;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.12);color:#9fb7bb;font-size:12px;}
+
+  @media (max-width: 900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .product-grid-full{grid-template-columns:repeat(2,1fr);}
+    .industry-grid{grid-template-columns:1fr;}
+    .article-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    nav.main-nav{display:none;}
+    .mobile-toggle{display:block;}
+  }
+  
+
+</style>
+</head>
+<body>
+
+
+
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="badge">● 全港首間認知訓練智能麻雀書法系統</span>
+      <h1>樂齡科技專家<br>結合 AI，重塑健康樂齡生活</h1>
+      <p class="sub">專注研發沉浸式認知訓練、體感復康運動及 AI 語音關懷系統。醍念科技（Medmind Technology）為長者、照顧者及機構提供一站式樂齡科技方案。</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">免費諮詢</a>
+        <a href="#" class="btn-secondary">查看全部產品</a>
+      </div>
+    </div>
+    <div class="hero-visual"><span>[ 產品使用情境相片 / 截圖佔位 ]<br>建議：長者使用 NeuroGym 或 PhysioPlay 的實際畫面</span></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">200+</div><div class="stat-label">合作機構</div></div>
+    <div><div class="stat-num">30,000+</div><div class="stat-label">受惠人數</div></div>
+    <div><div class="stat-num">70+</div><div class="stat-label">認知遊戲</div></div>
+    <div><div class="stat-num">30+</div><div class="stat-label">合作夥伴</div></div>
+  </div>
+</section>
+
+<!-- ALL PRODUCTS — 仿 Motive Force 全列出邏輯 -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">完整產品方案</div>
+      <h2>從認知訓練到日常關懷的一站式方案</h2>
+      <p>由軟件到硬件、由訓練到關懷，我們提供完整的樂齡科技解決方案。</p>
+    </div>
+    <div class="product-grid-full">
+      <div class="product-card">
+        <span class="new-tag">熱賣</span>
+        <div class="product-icon icon-ng">🀄</div>
+        <h3>NeuroGym 腦有記</h3>
+        <p>本土化認知訓練及認知障礙症評估應用程式，以麻雀、書法等本地文化遊戲提升參與度。</p>
+        <a href="#" class="link">了解更多 →</a>
+      </div>
+      <div class="product-card">
+        <span class="new-tag">熱賣</span>
+        <div class="product-icon icon-pp">🏃</div>
+        <h3>PhysioPlay 復康樂</h3>
+        <p>結合物理治療、遊戲和運動的體感訓練系統，支援智能桌及鏡頭感應裝置。</p>
+        <a href="#" class="link">了解更多 →</a>
+      </div>
+      <div class="product-card">
+        <span class="new-tag">新</span>
+        <div class="product-icon icon-ai">📞</div>
+        <h3>AI 智能語音系統</h3>
+        <p>24小時自動語音關懷、服藥提醒、活動確認，免下載App，減輕照顧者負擔。</p>
+        <a href="#" class="link">了解更多 →</a>
+      </div>
+      <div class="product-card">
+        <span class="new-tag">新</span>
+        <div class="product-icon icon-ar">🌸</div>
+        <h3>香薰沉浸放鬆系統</h3>
+        <p>結合香氣、畫面與音效的沉浸式放鬆體驗，穩定情緒、緩解照顧壓力。</p>
+        <a href="#" class="link">了解更多 →</a>
+      </div>
+    </div>
+    <div class="view-all"><a href="#">查看全部產品 →</a></div>
+  </div>
+</section>
+
+<!-- INDUSTRY RECOGNITION — 新增，仿 Motive Force -->
+<section class="recognition-strip">
+  <div class="recognition-inner">
+    <span class="eyebrow">業界認可</span>
+    <div class="badge-row">
+      <div class="badge-chip">🏆 香港科學園培育企業</div>
+      <div class="badge-chip">🎓 香港城市大學合作項目</div>
+      <div class="badge-chip">💰 樂齡及康復創科應用基金認可供應商</div>
+      <div class="badge-chip">📰 本地媒體報導</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS BY INDUSTRY — 仿 Targeted Application Solutions -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">按產業分類方案</div>
+      <h2>專為不同機構需要而設的方案</h2>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card">
+        <h3>🏢 安老及復康機構應用</h3>
+        <p>支援多項政府資助計劃，包括樂齡及康復創科應用基金（I&T Fund）。提供認知訓練、體感復康及 AI 關懷的完整方案，適合安老院舍、日間中心及復康機構。</p>
+        <div class="fund-tags">
+          <span class="fund-tag">第13期樂齡基金</span>
+          <span class="fund-tag">資助最高$900,000</span>
+        </div>
+        <a href="#" class="link" style="color:var(--brand-blue);font-weight:700;font-size:14px;">了解方案 →</a>
+      </div>
+      <div class="industry-card">
+        <h3>🎓 學生教育應用</h3>
+        <p>透過遊戲化學習及本土文化內容，豐富學生的校內外生活，並可與企業社會責任（CSR）及義工計劃結合。</p>
+        <div class="fund-tags">
+          <span class="fund-tag">企業合作</span>
+          <span class="fund-tag">義工計劃</span>
+        </div>
+        <a href="#" class="link" style="color:var(--brand-blue);font-weight:700;font-size:14px;">了解方案 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES — GEO 關鍵區塊，仿 Motive Force -->
+<section class="section" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">文章專區</div>
+      <h2>緊貼樂齡科技最新趨勢</h2>
+      <p>持續發布具體年份、數據與產業趨勢的深度文章，建立行業權威內容。</p>
+    </div>
+    <div class="article-grid">
+      <div class="article-card">
+        <div class="article-thumb">[ 文章配圖 ]</div>
+        <div class="article-body">
+          <div class="article-tag">樂齡復康</div>
+          <h4>2026-2027 香港樂齡科技與智慧居家安老新趨勢</h4>
+          <p>探討 AI 個人化復康、動態難度調整（DDA）及數據導向復康如何支援智慧居家安老。</p>
+          <div class="article-date">2026年8月</div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-thumb">[ 文章配圖 ]</div>
+        <div class="article-body">
+          <div class="article-tag">基金申請</div>
+          <h4>第13期樂齡基金申請指南：5大採購樂齡科技產品要點</h4>
+          <p>詳解申請期限、資助額上限及採購清單準備要點。</p>
+          <div class="article-date">2026年7月</div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-thumb">[ 文章配圖 ]</div>
+        <div class="article-body">
+          <div class="article-tag">產品應用</div>
+          <h4>NeuroGym 於認知障礙症預防的臨床應用案例</h4>
+          <p>與香港城市大學合作研究，探討本土化認知訓練遊戲的成效數據。</p>
+          <div class="article-date">2026年6月</div>
+        </div>
+      </div>
+    </div>
+    <div class="view-all"><a href="#">查看全部文章 →</a></div>
+  </div>
+</section>
+
+<!-- PARTNERS & CLIENTS — 條列客戶類型，仿 Motive Force -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">合作夥伴與客戶</div>
+      <h2>服務超過200間機構的信任之選</h2>
+      <p>過去多年，我們的產品已成功應用於以下類型機構：</p>
+    </div>
+    <div class="client-types">
+      <div class="client-chip">安老院舍</div>
+      <div class="client-chip">日間護理中心</div>
+      <div class="client-chip">長者鄰舍中心</div>
+      <div class="client-chip">復康機構</div>
+      <div class="client-chip">非牟利組織</div>
+      <div class="client-chip">醫院</div>
+      <div class="client-chip">中小學</div>
+      <div class="client-chip">大專院校</div>
+      <div class="client-chip">政府部門</div>
+      <div class="client-chip">企業合作夥伴</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">為何選擇我們</div>
+      <h2>值得信任的樂齡科技夥伴</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">📋</div><h4>一站式基金申請協助</h4><p>免費協助申請樂齡及康復創科應用基金</p></div>
+      <div class="why-item"><div class="why-icon">🏙️</div><h4>本土文化內容設計</h4><p>麻雀、街市、飲茶等本地情境</p></div>
+      <div class="why-item"><div class="why-icon">🎓</div><h4>學術及臨床背景支持</h4><p>大學教授與專科醫生共同研發</p></div>
+      <div class="why-item"><div class="why-icon">🤝</div><h4>200+ 機構信任使用</h4><p>全港安老院舍及復康機構廣泛採用</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="final-cta">
+  <h2>準備好為長者提供更好的照顧體驗？</h2>
+  <p>立即申請第13期樂齡及康復創科應用基金，最高可獲資助90萬港元</p>
+  <div class="hero-ctas" style="justify-content:center;">
+    <a href="#" class="btn-primary">立即申請樂齡基金</a>
+    <a href="#" class="btn-secondary" style="background:transparent;color:#fff;border-color:#fff;">聯絡我們</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h5>產品</h5>
+      <a href="#">NeuroGym 腦有記</a><a href="#">PhysioPlay 復康樂</a><a href="#">AI 智能語音系統</a><a href="#">香薰沉浸放鬆系統</a>
+    </div>
+    <div class="footer-col">
+      <h5>解決方案</h5>
+      <a href="#">安老院舍 / 日間中心</a><a href="#">復康機構</a><a href="#">企業合作</a><a href="#">學生教育</a>
+    </div>
+    <div class="footer-col">
+      <h5>資源</h5>
+      <a href="#">文章專區</a><a href="#">樂齡基金申請</a><a href="#">成效與數字</a><a href="#">過往活動</a>
+    </div>
+    <div class="footer-col">
+      <h5>聯絡我們</h5>
+      <a href="#">📞 電話查詢</a><a href="#">💬 WhatsApp</a><a href="#">✉️ 電郵</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Medmind Technology Limited 醍念科技有限公司 — Mockup for internal review only</div>
+</footer>
+
+</body>
+</html>

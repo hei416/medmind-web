@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>關於我們 —  Mockup</title>
+<style>
+  :root{
+    --brand-blue:#1f6f8b;--brand-blue-dark:#155263;--brand-teal:#2fa89b;--brand-green:#4caf7d;
+    --bg-cream:#faf7f2;--text-dark:#1f2933;--text-mid:#52606d;--card-bg:#ffffff;
+    --border-soft:#e4e9ec;--shadow:0 4px 16px rgba(31,111,139,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--text-dark);background:var(--bg-cream);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  .mock-banner{background:#fff3cd;color:#7a5b00;text-align:center;font-size:13px;padding:8px 16px;border-bottom:1px solid #f0d98c;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border-soft);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1160px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--brand-blue-dark);}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand-teal),var(--brand-blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:800;}
+  nav.main-nav{display:flex;align-items:center;gap:26px;}
+  .nav-item{position:relative;font-size:15px;font-weight:500;color:var(--text-dark);cursor:pointer;padding:8px 0;}
+  .nav-item.active{color:var(--brand-blue);font-weight:700;}
+  .nav-item:hover{color:var(--brand-blue);}
+  .dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border-soft);border-radius:12px;box-shadow:var(--shadow);padding:10px;min-width:200px;display:none;flex-direction:column;gap:2px;margin-top:10px;}
+  .nav-item:hover .dropdown{display:flex;}
+  .dropdown a{padding:10px 12px;border-radius:8px;font-size:14px;color:var(--text-mid);white-space:nowrap;}
+  .dropdown a.current{background:#eef7f6;color:var(--brand-blue-dark);font-weight:700;}
+  .dropdown a:hover{background:var(--bg-cream);color:var(--brand-blue-dark);}
+  .nav-cta{background:var(--brand-blue);color:#fff;padding:10px 20px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap;}
+
+  .page-hero{padding:48px 24px 32px;text-align:center;background:linear-gradient(180deg,#eef7f6 0%, var(--bg-cream) 100%);}
+  .breadcrumb{font-size:13px;color:var(--text-mid);margin-bottom:14px;}
+  .breadcrumb .sep{margin:0 6px;color:#bcd;}
+  .page-hero h1{font-size:32px;color:var(--brand-blue-dark);margin:0 0 12px;}
+  .page-hero p{font-size:15px;color:var(--text-mid);max-width:640px;margin:0 auto;}
+  .geo-note{background:#eef7f6;border:1px dashed var(--brand-teal);border-radius:12px;padding:10px 16px;font-size:12px;color:var(--brand-blue-dark);max-width:640px;margin:16px auto 0;}
+
+  .subnav{display:flex;justify-content:center;gap:8px;padding:0 24px 40px;flex-wrap:wrap;}
+  .subnav a{padding:10px 20px;border-radius:999px;font-size:14px;border:1px solid var(--border-soft);background:#fff;color:var(--text-mid);}
+  .subnav a.active{background:var(--brand-blue);color:#fff;border-color:var(--brand-blue);}
+
+  .section{padding:56px 24px;}
+  .section-inner{max-width:1160px;margin:0 auto;}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 40px;}
+  .eyebrow{color:var(--brand-teal);font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  .section-head h2{font-size:26px;margin:8px 0 12px;color:var(--brand-blue-dark);}
+  .section-head p{color:var(--text-mid);font-size:14px;}
+
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .intro-visual{background:linear-gradient(135deg,var(--brand-teal),var(--brand-blue));border-radius:20px;height:280px;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;box-shadow:var(--shadow);}
+  .intro-text p{color:var(--text-mid);font-size:15px;margin-bottom:14px;}
+  .fact-list{list-style:none;padding:0;margin:20px 0 0;}
+  .fact-list li{display:flex;gap:10px;font-size:14px;color:var(--text-dark);margin-bottom:10px;align-items:flex-start;}
+  .fact-list li::before{content:"✓";color:var(--brand-green);font-weight:800;}
+
+  /* RECOGNITION */
+  .recognition-strip{background:#fff;padding:36px 24px;border:1px solid var(--border-soft);border-radius:16px;margin-bottom:8px;}
+  .badge-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .badge-chip{background:var(--bg-cream);border:1px solid var(--border-soft);border-radius:10px;padding:12px 20px;font-size:13px;color:var(--text-dark);font-weight:600;display:flex;align-items:center;gap:8px;}
+
+  .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+  .stat-card{background:#fff;border:1px solid var(--border-soft);border-radius:16px;padding:28px 16px;box-shadow:var(--shadow);}
+  .stat-num{font-size:30px;font-weight:800;color:var(--brand-blue);}
+  .stat-label{font-size:13px;color:var(--text-mid);margin-top:6px;}
+  .stat-disclaimer{text-align:center;font-size:12px;color:#93a1ab;margin-top:16px;}
+
+  .timeline{position:relative;max-width:760px;margin:0 auto;padding-left:28px;border-left:3px solid var(--border-soft);}
+  .timeline-item{position:relative;padding-bottom:36px;}
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-dot{position:absolute;left:-38px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--brand-blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--brand-blue);}
+  .timeline-year{font-size:14px;font-weight:800;color:var(--brand-teal);margin-bottom:4px;}
+  .timeline-item h4{margin:0 0 6px;font-size:16px;color:var(--text-dark);}
+  .timeline-item p{margin:0;font-size:14px;color:var(--text-mid);}
+
+  /* CLIENT TYPES */
+  .client-types{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  .client-chip{background:#fff;border:1px solid var(--border-soft);border-radius:999px;padding:9px 18px;font-size:13px;color:var(--text-mid);}
+
+  .event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .event-card{background:#fff;border:1px solid var(--border-soft);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+  .event-thumb{height:120px;background:linear-gradient(135deg,#dce9ea,#c7dde0);display:flex;align-items:center;justify-content:center;color:var(--brand-blue-dark);font-size:13px;}
+  .event-body{padding:18px;}
+  .event-date{font-size:12px;color:var(--brand-teal);font-weight:700;margin-bottom:6px;}
+  .event-card h4{margin:0 0 6px;font-size:15px;color:var(--text-dark);}
+  .event-card p{margin:0;font-size:13px;color:var(--text-mid);}
+
+  .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .testimonial-card{background:#fff;border:1px solid var(--border-soft);border-radius:16px;padding:22px;box-shadow:var(--shadow);}
+  .stars{color:#f2b84b;font-size:14px;margin-bottom:10px;}
+  .testimonial-card p.quote{font-size:14px;color:var(--text-mid);margin:0 0 16px;}
+  .testimonial-author{display:flex;align-items:center;gap:10px;}
+  .avatar{width:38px;height:38px;border-radius:50%;background:var(--brand-teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+  .author-name{font-size:13px;font-weight:700;color:var(--text-dark);}
+  .author-role{font-size:12px;color:var(--text-mid);}
+
+  .final-cta{background:linear-gradient(135deg,var(--brand-blue),var(--brand-teal));color:#fff;text-align:center;padding:56px 24px;border-radius:24px;max-width:1112px;margin:0 auto 64px;}
+  .final-cta h2{font-size:24px;margin:0 0 10px;}
+  .final-cta p{font-size:14px;margin:0 0 22px;opacity:.9;}
+  .btn-primary{background:#fff;color:var(--brand-blue-dark);padding:14px 26px;border-radius:10px;font-weight:700;font-size:15px;display:inline-block;}
+
+  footer{background:var(--brand-blue-dark);color:#dce8ea;padding:30px 24px;font-size:12px;text-align:center;}
+
+  @media (max-width:900px){
+    .intro-grid{grid-template-columns:1fr;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .event-grid{grid-template-columns:1fr;}
+    .testimonial-grid{grid-template-columns:1fr;}
+    nav.main-nav{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">🧪 Mockup v2 —「關於我們」整合頁 + GEO 優化：新增產業認證區塊、具體事實列表、客戶類型條列</div>
+
+<header>
+  <div class="navbar">
+    <a href="#" class="logo"><span class="logo-mark">M</span>Medmind Technology</a>
+    <nav class="main-nav">
+      <a href="#" class="nav-item">首頁</a>
+      <div class="nav-item">解決方案 ▾<div class="dropdown"><a href="#">認知訓練與評估</a><a href="#">復康運動訓練</a><a href="#">照顧者支援</a><a href="#">情緒舒緩</a></div></div>
+      <div class="nav-item">產品 ▾<div class="dropdown"><a href="#">NeuroGym 腦有記</a><a href="#">PhysioPlay 復康樂</a><a href="#">AI 智能語音系統</a><a href="#">香薰沉浸放鬆系統</a></div></div>
+      <div class="nav-item">文章專區 ▾<div class="dropdown"><a href="#">樂齡科技趨勢</a><a href="#">基金申請指南</a><a href="#">產品應用案例</a></div></div>
+      <div class="nav-item active">關於我們 ▾<div class="dropdown"><a href="#" class="current">公司簡介</a><a href="#">成效與數字</a><a href="#">過往活動</a><a href="#">客戶評價</a></div></div>
+      <a href="#" class="nav-item">樂齡基金申請</a>
+      <a href="#" class="nav-cta">免費諮詢</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="breadcrumb">首頁 <span class="sep">/</span> 關於我們</div>
+  <h1>關於 Medmind Technology 醍念科技</h1>
+  <p>我們是一家專注於健康樂齡及認知障礙症預防的科技初創公司，結合學術研究與臨床經驗，為長者、照顧者及機構提供創新解決方案。</p>
+  <div class="geo-note">💡 GEO 優化重點：清楚陳述「公司名稱＋產業定位＋核心能力」，方便 AI 工具準確摘要「Medmind Technology 是甚麼」</div>
+</section>
+
+<div class="subnav">
+  <a href="#intro" class="active">公司簡介</a>
+  <a href="#recognition">業界認可</a>
+  <a href="#stats">成效與數字</a>
+  <a href="#timeline">發展歷程</a>
+  <a href="#clients">客戶類型</a>
+  <a href="#events">過往活動</a>
+  <a href="#testimonials">客戶評價</a>
+</div>
+
+<section class="section" id="intro" style="background:#fff;padding-top:0;">
+  <div class="section-inner">
+    <div class="intro-grid">
+      <div class="intro-visual">[ 團隊 / 辦公室相片佔位 ]</div>
+      <div class="intro-text">
+        <div class="eyebrow">公司簡介</div>
+        <h2 style="color:var(--brand-blue-dark);font-size:24px;margin:8px 0 16px;">用科技，重新定義健康樂齡</h2>
+        <p>Medmind Technology 是一家創新的健康科技初創公司，致力研發有趣且實用的解決方案，推動健康樂齡及認知障礙症的預防與訓練。</p>
+        <ul class="fact-list">
+          <li>2018 年成立於香港科學園（HKSTP）</li>
+          <li>研發團隊包括大學教授及專科醫生</li>
+          <li>與香港城市大學（CityU）保持長期學術合作</li>
+          <li>產品獲第13期樂齡及康復創科應用基金認可</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION — 新增 -->
+<section class="section" id="recognition">
+  <div class="section-inner">
+    <div class="recognition-strip">
+      <div class="section-head" style="margin-bottom:20px;">
+        <div class="eyebrow">業界認可</div>
+      </div>
+      <div class="badge-row">
+        <div class="badge-chip">🏆 香港科學園培育企業</div>
+        <div class="badge-chip">🎓 香港城市大學合作項目</div>
+        <div class="badge-chip">💰 樂齡基金認可供應商</div>
+        <div class="badge-chip">📰 本地媒體報導</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stats" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">成效與數字</div>
+      <h2>我們的實績</h2>
+    </div>
+    <div class="stats-inner">
+      <div class="stat-card"><div class="stat-num">200+</div><div class="stat-label">合作機構</div></div>
+      <div class="stat-card"><div class="stat-num">30,000+</div><div class="stat-label">受惠人數</div></div>
+      <div class="stat-card"><div class="stat-num">70+</div><div class="stat-label">認知遊戲</div></div>
+      <div class="stat-card"><div class="stat-num">30+</div><div class="stat-label">合作夥伴</div></div>
+    </div>
+    <p class="stat-disclaimer">以上數字反映系統使用及服務覆蓋情況，並非臨床療效聲稱。</p>
+  </div>
+</section>
+
+<section class="section" id="timeline">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">發展歷程</div>
+      <h2>我們的成長軌跡</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2018</div><h4>公司成立於香港科學園（HKSTP）</h4><p>由大學教授及專科醫生共同創立，專注於健康樂齡及認知障礙症預防科技研發。</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2020</div><h4>NeuroGym 腦有記首個版本推出</h4><p>結合本土文化元素（麻雀、書法）的認知訓練應用程式正式上線。</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2022</div><h4>PhysioPlay 復康樂推出</h4><p>體感物理治療及運動訓練系統，支援智能桌及鏡頭感應裝置。</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2023</div><h4>突破 200 間機構使用</h4><p>服務範圍擴展至安老院舍、日間中心及復康機構。</p></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2026</div><h4>推出 AI 智能語音系統及香薰沉浸放鬆系統</h4><p>擴展產品線至日常關懷及情緒舒緩領域，提供一站式樂齡科技方案。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT TYPES — 新增，仿 Motive Force Partners and Clients -->
+<section class="section" id="clients" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">合作夥伴與客戶</div>
+      <h2>服務多元類型機構</h2>
+      <p>過去多年，我們的產品已成功應用於以下類型機構：</p>
+    </div>
+    <div class="client-types">
+      <div class="client-chip">安老院舍</div><div class="client-chip">日間護理中心</div><div class="client-chip">長者鄰舍中心</div>
+      <div class="client-chip">復康機構</div><div class="client-chip">非牟利組織</div><div class="client-chip">醫院</div>
+      <div class="client-chip">中小學</div><div class="client-chip">大專院校</div><div class="client-chip">政府部門</div>
+      <div class="client-chip">企業合作夥伴</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="events">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">過往活動</div>
+      <h2>展覽、講座與合作項目</h2>
+    </div>
+    <div class="event-grid">
+      <div class="event-card"><div class="event-thumb">[ 活動相片 ]</div><div class="event-body"><div class="event-date">2026年3月</div><h4>樂齡科技博覽暨高峰會</h4><p>展示 NeuroGym 及 PhysioPlay 最新功能，與多間安老院舍代表交流。</p></div></div>
+      <div class="event-card"><div class="event-thumb">[ 活動相片 ]</div><div class="event-body"><div class="event-date">2025年11月</div><h4>認知障礙症預防講座系列</h4><p>與地區長者中心合作舉辦公眾教育講座，推廣及早預防意識。</p></div></div>
+      <div class="event-card"><div class="event-thumb">[ 活動相片 ]</div><div class="event-body"><div class="event-date">2025年6月</div><h4>與香港城市大學研究合作</h4><p>共同發表認知訓練成效研究，強化產品的學術及臨床基礎。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimonials" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">客戶評價</div>
+      <h2>機構與家庭的真實反饋</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">「長者對麻雀主題遊戲反應很好，比起傳統認知訓練工作紙更容易吸引他們持續參與。」</p><div class="testimonial-author"><div class="avatar">陳</div><div><div class="author-name">陳姑娘</div><div class="author-role">日間護理中心主任</div></div></div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">「PhysioPlay 的體感遊戲讓復康訓練變得有趣，院友的參與率明顯提升。」</p><div class="testimonial-author"><div class="avatar">李</div><div><div class="author-name">李職業治療師</div><div class="author-role">私營安老院舍</div></div></div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">「AI智能語音系統讓我們不用每天逐一致電住客確認狀況，節省了不少人手時間。」</p><div class="testimonial-author"><div class="avatar">黃</div><div><div class="author-name">黃社工</div><div class="author-role">綜合家居照顧服務隊</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="final-cta">
+  <h2>想了解更多合作機會？</h2>
+  <p>歡迎聯絡我們的團隊，一起探討如何為您的機構或家庭帶來改變</p>
+  <a href="#" class="btn-primary">聯絡我們</a>
+</div>
+
+<footer>© 2026 Medmind Technology Limited 醍念科技有限公司 — Mockup for internal review only</footer>
+
+</body>
+</html>

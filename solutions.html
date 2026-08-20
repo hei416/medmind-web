@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>解決方案 — Medmind Technology Mockup v2</title>
+<style>
+  :root{
+    --brand-blue:#1f6f8b;--brand-blue-dark:#155263;--brand-teal:#2fa89b;--brand-green:#4caf7d;
+    --bg-cream:#faf7f2;--text-dark:#1f2933;--text-mid:#52606d;--card-bg:#ffffff;
+    --border-soft:#e4e9ec;--shadow:0 4px 16px rgba(31,111,139,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--text-dark);background:var(--bg-cream);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  .mock-banner{background:#fff3cd;color:#7a5b00;text-align:center;font-size:13px;padding:8px 16px;border-bottom:1px solid #f0d98c;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border-soft);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1160px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--brand-blue-dark);}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand-teal),var(--brand-blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:800;}
+  nav.main-nav{display:flex;align-items:center;gap:26px;}
+  .nav-item{position:relative;font-size:15px;font-weight:500;color:var(--text-dark);cursor:pointer;padding:8px 0;}
+  .nav-item.active{color:var(--brand-blue);font-weight:700;}
+  .nav-item:hover{color:var(--brand-blue);}
+  .dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border-soft);border-radius:12px;box-shadow:var(--shadow);padding:10px;min-width:200px;display:none;flex-direction:column;gap:2px;margin-top:10px;}
+  .nav-item:hover .dropdown{display:flex;}
+  .dropdown a{padding:10px 12px;border-radius:8px;font-size:14px;color:var(--text-mid);white-space:nowrap;}
+  .dropdown a:hover{background:var(--bg-cream);color:var(--brand-blue-dark);}
+  .nav-cta{background:var(--brand-blue);color:#fff;padding:10px 20px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap;}
+
+  .page-hero{padding:48px 24px 32px;text-align:center;background:linear-gradient(180deg,#eef7f6 0%, var(--bg-cream) 100%);}
+  .breadcrumb{font-size:13px;color:var(--text-mid);margin-bottom:14px;}
+  .breadcrumb .sep{margin:0 6px;color:#bcd;}
+  .page-hero h1{font-size:32px;color:var(--brand-blue-dark);margin:0 0 12px;}
+  .page-hero p{font-size:15px;color:var(--text-mid);max-width:640px;margin:0 auto;}
+  .geo-note{background:#eef7f6;border:1px dashed var(--brand-teal);border-radius:12px;padding:10px 16px;font-size:12px;color:var(--brand-blue-dark);max-width:640px;margin:16px auto 0;}
+
+  .tab-nav{display:flex;justify-content:center;gap:10px;padding:0 24px 40px;flex-wrap:wrap;}
+  .tab-btn{padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid var(--border-soft);background:#fff;color:var(--text-mid);cursor:pointer;transition:.15s;}
+  .tab-btn.active{background:var(--brand-blue);color:#fff;border-color:var(--brand-blue);}
+
+  .section{padding:0 24px 64px;max-width:1160px;margin:0 auto;}
+  .solution-block{display:none;}
+  .solution-block.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .solution-hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;background:#fff;border:1px solid var(--border-soft);border-radius:20px;padding:36px;box-shadow:var(--shadow);margin-bottom:32px;}
+  .solution-visual{border-radius:16px;height:220px;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:16px;font-size:14px;}
+  .v-cog{background:linear-gradient(135deg,#5aa9e6,#1f6f8b);}
+  .v-phys{background:linear-gradient(135deg,#4caf7d,#2fa89b);}
+  .v-care{background:linear-gradient(135deg,#f2a154,#e0703c);}
+  .v-relax{background:linear-gradient(135deg,#b083e0,#7a5cc4);}
+  .solution-tag{display:inline-block;font-size:12px;font-weight:700;color:var(--brand-teal);background:#eef7f6;padding:5px 12px;border-radius:999px;margin-bottom:12px;}
+  .solution-hero h2{font-size:24px;color:var(--brand-blue-dark);margin:0 0 12px;}
+  .solution-hero p{color:var(--text-mid);font-size:14px;margin:0 0 20px;}
+  .btn-primary{background:var(--brand-blue);color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;display:inline-block;}
+  .btn-primary:hover{background:var(--brand-blue-dark);}
+
+  .fund-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+  .fund-tag{background:var(--bg-cream);border:1px solid var(--border-soft);font-size:12px;color:var(--brand-blue-dark);padding:5px 12px;border-radius:999px;font-weight:600;}
+
+  .use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:32px;}
+  .use-case-card{background:#fff;border:1px solid var(--border-soft);border-radius:14px;padding:20px;box-shadow:var(--shadow);}
+  .use-case-card .icon{font-size:22px;margin-bottom:10px;}
+  .use-case-card h4{margin:0 0 6px;font-size:15px;color:var(--text-dark);}
+  .use-case-card p{margin:0;font-size:13px;color:var(--text-mid);}
+
+  .related-products{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px;}
+  .related-chip{background:#fff;border:1px solid var(--border-soft);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--text-dark);display:flex;align-items:center;gap:8px;}
+  .related-chip b{color:var(--brand-blue);}
+
+  /* RELATED ARTICLES — GEO 補充：每個解決方案掛對應文章 */
+  .related-articles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .mini-article{background:#fff;border:1px solid var(--border-soft);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:flex-start;}
+  .mini-article-icon{font-size:18px;flex-shrink:0;}
+  .mini-article h5{margin:0 0 4px;font-size:13px;color:var(--text-dark);}
+  .mini-article span{font-size:11px;color:var(--brand-teal);font-weight:700;}
+
+  .section-label{font-size:13px;font-weight:700;color:var(--brand-teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+
+  footer{background:var(--brand-blue-dark);color:#dce8ea;padding:30px 24px;font-size:12px;text-align:center;}
+
+  @media (max-width:900px){
+    .solution-hero{grid-template-columns:1fr;}
+    .use-case-grid{grid-template-columns:1fr;}
+    .related-articles{grid-template-columns:1fr;}
+    nav.main-nav{display:none;}
+  }
+</style>
+<link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+<section class="page-hero">
+  <div class="breadcrumb">首頁 <span class="sep">/</span> 解決方案</div>
+  <h1>按您的需要，找到合適方案</h1>
+  <p>不論您是關注認知退化、需要復康訓練、照顧壓力大，還是想為長者提供情緒支援，我們都有對應的解決方案。</p>
+  <div class="geo-note">💡 GEO 優化重點：每個方案附上具體基金名稱及相關文章連結，強化實體關鍵詞密度，方便 AI 工具準確引用</div>
+</section>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('cognitive')">🧠 認知訓練與評估</button>
+  <button class="tab-btn" onclick="showTab('physio')">🏃 復康運動訓練</button>
+  <button class="tab-btn" onclick="showTab('caregiver')">📞 照顧者支援</button>
+  <button class="tab-btn" onclick="showTab('relax')">🌸 情緒舒緩</button>
+</div>
+
+<div class="section">
+
+  <div class="solution-block active" id="cognitive">
+    <div class="solution-hero">
+      <div>
+        <span class="solution-tag">認知訓練與評估</span>
+        <h2>及早發現，持續訓練</h2>
+        <p>透過有趣的本土化遊戲，協助長者維持及提升認知能力，並讓家屬和專業人員更容易監察狀況變化。適合擔心記憶力衰退、希望及早預防認知障礙症的家庭及機構。</p>
+        <div class="fund-tags"><span class="fund-tag">第13期樂齡基金</span><span class="fund-tag">認可產品</span></div>
+        <a href="#" class="btn-primary">了解 NeuroGym →</a>
+      </div>
+      <div class="solution-visual v-cog">[ 長者玩認知遊戲情境相片 ]</div>
+    </div>
+    <div class="section-label">適用情境</div>
+    <div class="use-case-grid">
+      <div class="use-case-card"><div class="icon">👨‍👩‍👧</div><h4>擔心父母記憶力衰退</h4><p>異地子女想了解父母近期認知狀況變化</p></div>
+      <div class="use-case-card"><div class="icon">🏢</div><h4>機構認知訓練活動</h4><p>日間中心、院舍需要吸引長者持續參與的活動內容</p></div>
+      <div class="use-case-card"><div class="icon">👵👴</div><h4>雙老家庭共同訓練</h4><p>兩位長者一同進行遊戲，維持腦部活躍及社交互動</p></div>
+    </div>
+    <div class="section-label">相關產品</div>
+    <div class="related-products"><div class="related-chip">🀄 <b>NeuroGym 腦有記</b> — 認知訓練與評估應用程式</div></div>
+    <div class="section-label">相關文章</div>
+    <div class="related-articles">
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>NeuroGym 於認知障礙症預防的臨床應用案例</h5><span>樂齡復康 · 2026年6月</span></div></div>
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>2026-2027 香港樂齡科技與智慧居家安老新趨勢</h5><span>樂齡復康 · 2026年8月</span></div></div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="physio">
+    <div class="solution-hero">
+      <div>
+        <span class="solution-tag">復康運動訓練</span>
+        <h2>把復康訓練變成有趣的活動</h2>
+        <p>結合體感遊戲及物理治療原理，協助長者維持平衡、肌力及手眼協調，適合中風後復康、跌倒風險較高或需要持續運動訓練的長者。</p>
+        <div class="fund-tags"><span class="fund-tag">第13期樂齡基金</span><span class="fund-tag">支援智能桌</span></div>
+        <a href="#" class="btn-primary">了解 PhysioPlay →</a>
+      </div>
+      <div class="solution-visual v-phys">[ 長者做體感復康訓練情境相片 ]</div>
+    </div>
+    <div class="section-label">適用情境</div>
+    <div class="use-case-grid">
+      <div class="use-case-card"><div class="icon">🦴</div><h4>中風後復康</h4><p>需要持續進行平衡、肌力及協調訓練</p></div>
+      <div class="use-case-card"><div class="icon">⚠️</div><h4>跌倒風險管理</h4><p>透過遊戲化訓練提升活動信心，降低跌倒風險</p></div>
+      <div class="use-case-card"><div class="icon">🤝</div><h4>照顧者陪同訓練</h4><p>合作遊戲模式，讓照顧者與長者一同參與，減少抗拒感</p></div>
+    </div>
+    <div class="section-label">相關產品</div>
+    <div class="related-products"><div class="related-chip">🏃 <b>PhysioPlay 復康樂</b> — 體感物理治療與運動訓練系統</div></div>
+    <div class="section-label">相關文章</div>
+    <div class="related-articles">
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>第13期樂齡基金申請指南：5大採購要點</h5><span>基金申請 · 2026年7月</span></div></div>
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>2026-2027 香港樂齡科技與智慧居家安老新趨勢</h5><span>樂齡復康 · 2026年8月</span></div></div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="caregiver">
+    <div class="solution-hero">
+      <div>
+        <span class="solution-tag">照顧者支援</span>
+        <h2>減輕照顧者的日常負擔</h2>
+        <p>24小時自動語音關懷、服藥提醒及活動確認，讓照顧者不必事事親力親為，也能安心掌握長者近況，特別適合在職子女、年長照顧者及人手有限的機構。</p>
+        <div class="fund-tags"><span class="fund-tag">免下載App</span><span class="fund-tag">24小時運作</span></div>
+        <a href="#" class="btn-primary">了解 AI 智能語音系統 →</a>
+      </div>
+      <div class="solution-visual v-care">[ AI 語音關懷情境示意圖 ]</div>
+    </div>
+    <div class="section-label">適用情境</div>
+    <div class="use-case-grid">
+      <div class="use-case-card"><div class="icon">💼</div><h4>在職子女無暇每日致電</h4><p>由 AI 定時進行關懷及活動提醒，減少重複來電</p></div>
+      <div class="use-case-card"><div class="icon">👴</div><h4>年長照顧者操作不便</h4><p>免下載 App，接聽電話即可使用，降低使用門檻</p></div>
+      <div class="use-case-card"><div class="icon">🏥</div><h4>機構人手緊張</h4><p>自動化關懷流程，減輕前線人員重複致電的工作量</p></div>
+    </div>
+    <div class="section-label">相關產品</div>
+    <div class="related-products"><div class="related-chip">📞 <b>AI 智能語音系統</b> — 24小時自動語音關懷平台</div></div>
+    <div class="section-label">相關文章</div>
+    <div class="related-articles">
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>2026-2027 香港樂齡科技與智慧居家安老新趨勢</h5><span>樂齡復康 · 2026年8月</span></div></div>
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>第13期樂齡基金申請指南：5大採購要點</h5><span>基金申請 · 2026年7月</span></div></div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="relax">
+    <div class="solution-hero">
+      <div>
+        <span class="solution-tag">情緒舒緩</span>
+        <h2>穩定情緒，緩解照顧壓力</h2>
+        <p>結合香氣、畫面與音效的沉浸式體驗，適合長者放鬆身心，也適合長期照顧壓力大的家庭照顧者及前線員工作短暫休息之用。</p>
+        <div class="fund-tags"><span class="fund-tag">第13期樂齡基金</span><span class="fund-tag">身心靈舒緩</span></div>
+        <a href="#" class="btn-primary">了解香薰沉浸放鬆系統 →</a>
+      </div>
+      <div class="solution-visual v-relax">[ 香薰沉浸放鬆體驗情境相片 ]</div>
+    </div>
+    <div class="section-label">適用情境</div>
+    <div class="use-case-grid">
+      <div class="use-case-card"><div class="icon">😌</div><h4>長者情緒不穩</h4><p>透過沉浸式體驗協助長者放鬆及穩定情緒</p></div>
+      <div class="use-case-card"><div class="icon">💛</div><h4>照顧者身心俱疲</h4><p>照顧者亦可使用系統作短暫喘息及情緒舒緩</p></div>
+      <div class="use-case-card"><div class="icon">🏢</div><h4>機構員工減壓</h4><p>院舍或中心前線員工在輪班之間使用作短暫休息</p></div>
+    </div>
+    <div class="section-label">相關產品</div>
+    <div class="related-products"><div class="related-chip">🌸 <b>香薰沉浸放鬆系統</b> — 身心靈舒緩體驗系統</div></div>
+    <div class="section-label">相關文章</div>
+    <div class="related-articles">
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>第13期樂齡基金申請指南：5大採購要點</h5><span>基金申請 · 2026年7月</span></div></div>
+      <div class="mini-article"><span class="mini-article-icon">📄</span><div><h5>2026-2027 香港樂齡科技與智慧居家安老新趨勢</h5><span>樂齡復康 · 2026年8月</span></div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 Medmind Technology Limited 醍念科技有限公司 — Mockup for internal review only</footer>
+
+<script>
+  function showTab(id){
+    document.querySelectorAll('.solution-block').forEach(el=>el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
