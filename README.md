@@ -34,9 +34,4 @@ python -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Bug fixed
 
-The original navbar loader used a page-relative `fetch('navbar.html')` call with no
-error handling. This broke on nested pages/deployments and failed silently. It now
-uses a root-relative path (`/components/navbar.html`), waits for `DOMContentLoaded`,
-and logs/falls back gracefully on failure. See `js/include.js`.
