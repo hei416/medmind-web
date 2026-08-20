@@ -1,0 +1,15 @@
+footer { background: var(--brand-blue-dark); color: #dce8ea; padding: 40px 24px 24px; font-size: 13px; }
+.footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.footer-col h5 { color: #fff; font-size: 14px; margin: 0 0 12px; }
+.footer-col a { display: block; color: #b8ccd0; margin-bottom: 8px; font-size: 13px; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); color: #9fb7bb; font-size: 12px; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .product-grid-full { grid-template-columns: repeat(2, 1fr); }
+  .industry-grid { grid-template-columns: 1fr; }
+  .article-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
