@@ -1,0 +1,65 @@
+/* MOCK BANNER & DEMO NOTES */
+.mock-banner { background: #fff3cd; color: #7a5b00; text-align: center; font-size: 13px; padding: 8px 16px; border-bottom: 1px solid #f0d98c; }
+.demo-note { max-width: 1160px; margin: 20px auto 0; padding: 0 24px; font-size: 13px; color: var(--text-mid); }
+.demo-note b { color: var(--brand-blue-dark); }
+
+/* HEADER / NAVBAR */
+header { position: relative; z-index: 50; background: #fff; border-bottom: 1px solid var(--border-soft); }
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1160px; margin: 0 auto; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: var(--brand-blue-dark); }
+.logo-mark { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--brand-teal), var(--brand-blue)); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; font-weight: 800; }
+nav.main-nav { display: flex; align-items: center; gap: 26px; }
+.nav-item { position: relative; font-size: 15px; font-weight: 500; color: var(--text-dark); cursor: pointer; padding: 16px 0; }
+.nav-item:hover, .nav-item.open { color: var(--brand-blue); }
+.nav-cta { background: var(--brand-blue); color: #fff; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+/* SIMPLE DROPDOWN (產品 / 文章 / 關於我們) */
+.simple-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: #fff; border: 1px solid var(--border-soft); border-radius: 12px; box-shadow: var(--shadow); padding: 10px; min-width: 210px; display: none; flex-direction: column; gap: 2px; margin-top: 0; }
+.nav-item:hover .simple-dropdown { display: flex; }
+.simple-dropdown a { padding: 10px 12px; border-radius: 8px; font-size: 14px; color: var(--text-mid); white-space: nowrap; }
+.simple-dropdown a:hover { background: var(--bg-cream); color: var(--brand-blue-dark); }
+
+/* MEGA MENU — 解決方案 */
+.mega-wrapper { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 920px; display: none; padding-top: 0; }
+.nav-item.mega-trigger:hover .mega-wrapper { display: block; }
+.mega-menu { background: #fff; border: 1px solid var(--border-soft); border-radius: 16px; box-shadow: var(--shadow); padding: 28px; display: grid; grid-template-columns: 1.2fr 1fr 0.9fr; gap: 28px; }
+
+.mega-col h5 { font-size: 12px; font-weight: 800; color: var(--brand-teal); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 14px; }
+
+/* Column 1: 按服務對象 — 卡片式 */
+.audience-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.audience-mini-card { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border-soft); }
+.audience-mini-card:hover { background: var(--bg-cream); border-color: var(--brand-teal); }
+.audience-mini-icon { font-size: 18px; width: 32px; height: 32px; border-radius: 8px; background: #eef7f6; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.audience-mini-card div p { margin: 0; font-size: 13px; font-weight: 700; color: var(--text-dark); }
+.audience-mini-card div span { font-size: 11px; color: var(--text-mid); }
+
+/* Column 2: 按方案類型 */
+.type-list { display: flex; flex-direction: column; gap: 4px; }
+.type-item { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; }
+.type-item:hover { background: var(--bg-cream); }
+.type-icon { width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #fff; flex-shrink: 0; }
+.icon-ng { background: linear-gradient(135deg, #5aa9e6, #1f6f8b); }
+.icon-pp { background: linear-gradient(135deg, #4caf7d, #2fa89b); }
+.icon-ai { background: linear-gradient(135deg, #f2a154, #e0703c); }
+.icon-ar { background: linear-gradient(135deg, #b083e0, #7a5cc4); }
+.type-item span { font-size: 13px; color: var(--text-dark); font-weight: 600; }
+
+/* Column 3: 精選 CTA / 快速連結 */
+.mega-feature { background: linear-gradient(135deg, var(--brand-teal), var(--brand-blue)); border-radius: 14px; padding: 20px; color: #fff; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+.mega-feature p.tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: .85; margin: 0 0 8px; }
+.mega-feature h4 { font-size: 15px; margin: 0 0 8px; }
+.mega-feature p.desc { font-size: 12px; opacity: .9; margin: 0 0 16px; }
+.mega-feature a.feature-cta { background: #fff; color: var(--brand-blue-dark); font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 999px; display: inline-block; align-self: flex-start; }
+
+.mega-footer-link { grid-column: 1 / -1; border-top: 1px solid var(--border-soft); margin-top: 4px; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; }
+.mega-footer-link span { font-size: 12px; color: var(--text-mid); }
+.mega-footer-link a { font-size: 13px; font-weight: 700; color: var(--brand-blue); }
+
+/* content area just for scroll spacing */
+.spacer { height: 640px; display: flex; align-items: center; justify-content: center; color: var(--text-mid); font-size: 14px; padding: 40px; text-align: center; }
+
+@media (max-width: 1000px) {
+  nav.main-nav { display: none; }
+  .mega-wrapper { width: 100%; left: 0; transform: none; }
+}

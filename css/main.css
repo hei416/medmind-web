@@ -1,0 +1,29 @@
+/* ============================================
+   Medmind Technology — Design Tokens & Base Styles
+   ============================================ */
+:root {
+  --brand-blue: #1f6f8b;
+  --brand-blue-dark: #155263;
+  --brand-teal: #2fa89b;
+  --brand-green: #4caf7d;
+  --bg-cream: #faf7f2;
+  --text-dark: #1f2933;
+  --text-mid: #52606d;
+  --card-bg: #ffffff;
+  --border-soft: #e4e9ec;
+  --shadow: 0 4px 16px rgba(31, 111, 139, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-cream);
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
